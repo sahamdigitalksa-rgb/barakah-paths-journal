@@ -19,7 +19,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   return <header className="site-header"><div className="site-container header-inner">
     <Link to="/" className="brand" onClick={() => setOpen(false)} aria-label="Barakah Paths home"><Mark/><span>Barakah Paths</span></Link>
-    <nav className={`main-nav ${open ? "is-open" : ""}`} aria-label="Main navigation">{links.map(item => <Link key={item.to} to={item.to} onClick={() => setOpen(false)} activeProps={{ className: "active" }} activeOptions={{ exact: true }}>{item.label}</Link>)}</nav>
+    <nav className={`main-nav ${open ? "is-open" : ""}`} aria-label="Main navigation">{links.map(item => <Link key={item.to} to={item.to} search={item.to === "/journal" ? { theme: undefined } : undefined} onClick={() => setOpen(false)} activeProps={{ className: "active" }} activeOptions={{ exact: true }}>{item.label}</Link>)}</nav>
     <Button asChild className="header-cta"><Link to="/about">Our story <ArrowUpRight size={16}/></Link></Button>
     <Button variant="ghost" size="icon" className="mobile-toggle" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>{open ? <X/> : <Menu/>}</Button>
   </div></header>;
