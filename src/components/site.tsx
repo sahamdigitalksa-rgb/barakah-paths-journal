@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Menu, ShoppingBag, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -8,6 +8,7 @@ const links = [
   { to: "/journal", label: "Journal" },
   { to: "/videos", label: "Videos" },
   { to: "/themes", label: "Themes" },
+  { to: "/shop", label: "Shop" },
   { to: "/about", label: "About" },
 ] as const;
 
@@ -18,9 +19,9 @@ export function Mark({ light = false }: { light?: boolean }) {
 export function Header() {
   const [open, setOpen] = useState(false);
   return <header className="site-header"><div className="site-container header-inner">
-    <Link to="/" className="brand" onClick={() => setOpen(false)} aria-label="Barakah Paths home"><Mark/><span>Barakah Paths</span></Link>
+    <Link to="/" className="brand brand-stacked" onClick={() => setOpen(false)} aria-label="Barakah Paths home"><Mark/><span className="brand-name">Barakah Paths</span><span className="brand-tag">SINGAPORE · MADINAH</span></Link>
     <nav className={`main-nav ${open ? "is-open" : ""}`} aria-label="Main navigation">{links.map(item => <Link key={item.to} to={item.to} {...(item.to === "/journal" ? { search: { theme: undefined } } : {})} onClick={() => setOpen(false)} activeProps={{ className: "active" }} activeOptions={{ exact: true }}>{item.label}</Link>)}</nav>
-    <Button asChild className="header-cta"><Link to="/about">Our story <ArrowUpRight size={16}/></Link></Button>
+    <Button asChild className="header-cta"><Link to="/shop"><ShoppingBag size={16}/> Guides</Link></Button>
     <Button variant="ghost" size="icon" className="mobile-toggle" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>{open ? <X/> : <Menu/>}</Button>
   </div></header>;
 }
