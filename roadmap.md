@@ -1,4 +1,4 @@
-- [ ] Build the Barakah Paths home, About, Journal, Videos, and Themes pages.
-- [ ] Create editorial branding, illustrative imagery, and responsive styling.
-- [ ] Prepare Elementor import templates, assets, and transfer instructions.
-- [ ] Verify navigation and responsive display, then inspect handoff files.
+- [x] Build the Barakah Paths home, About, Journal, Videos, and Themes pages.
+- [x] Create editorial branding, illustrative imagery, and responsive styling.
+- [x] Prepare Elementor import templates, assets, and transfer instructions.
+- [x] Verify navigation and responsive display, then inspect handoff files.
