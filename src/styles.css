@@ -21,8 +21,12 @@
 .site-header { position: relative; z-index: 30; background: var(--cream); border-bottom: 1px solid color-mix(in oklab, var(--ink) 9%, transparent); }
 .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; font: 500 22px/1 var(--font-display); color: var(--ink); }
-.brand-mark { width: 39px; height: 39px; border-radius: 50%; background: var(--ink); color: var(--cream); display: grid; place-items: center; }
-.brand-mark svg { width: 27px; height: 27px; } .brand-mark-light { background: var(--cream); color: var(--ink); }
+.brand-mark { width: 39px; height: 39px; color: var(--clay); display: grid; place-items: center; }
+.brand-mark svg { width: 36px; height: 36px; } .brand-mark-light { color: var(--cream); }
+.brand-stacked { flex-direction: column; gap: 3px; padding-block: 10px; text-align: center; }
+.brand-stacked .brand-mark { width: 44px; height: 40px; } .brand-stacked .brand-mark svg { width: 44px; height: 44px; }
+.brand-name { font-size: 25px; letter-spacing: .01em; } .brand-tag { font: 600 9px/1 var(--font-sans, Inter); letter-spacing: .28em; color: var(--clay); }
+@media(max-width:700px){ .brand-stacked .brand-mark{width:34px;height:30px} .brand-stacked .brand-mark svg{width:34px;height:34px} .brand-name{font-size:20px} }
 .main-nav { display: flex; align-items: center; gap: 30px; } .main-nav a { font-size: 13px; color: color-mix(in oklab, var(--ink) 68%, transparent); transition: color .2s; } .main-nav a:hover,.main-nav a.active { color: var(--clay); }
 .header-cta { border-radius: 2px; height: 39px; padding-inline: 17px; font-size: 12px; } .mobile-toggle { display: none; }
 .eyebrow { text-transform: uppercase; font-size: 11px; font-weight: 600; letter-spacing: .17em; color: var(--clay); }
