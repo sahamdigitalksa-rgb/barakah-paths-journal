@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as JournalRouteImport } from './routes/journal'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ThemesRouteImport } from './routes/themes'
 import { Route as VideosRouteImport } from './routes/videos'
 
@@ -30,6 +31,11 @@ const JournalRoute = JournalRouteImport.update({
   path: '/journal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ThemesRoute = ThemesRouteImport.update({
   id: '/themes',
   path: '/themes',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/journal': typeof JournalRoute
+  '/shop': typeof ShopRoute
   '/themes': typeof ThemesRoute
   '/videos': typeof VideosRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/journal': typeof JournalRoute
+  '/shop': typeof ShopRoute
   '/themes': typeof ThemesRoute
   '/videos': typeof VideosRoute
 }
@@ -60,21 +68,23 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/journal': typeof JournalRoute
+  '/shop': typeof ShopRoute
   '/themes': typeof ThemesRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/journal' | '/themes' | '/videos'
+  fullPaths: '/' | '/about' | '/journal' | '/shop' | '/themes' | '/videos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/journal' | '/themes' | '/videos'
-  id: '__root__' | '/' | '/about' | '/journal' | '/themes' | '/videos'
+  to: '/' | '/about' | '/journal' | '/shop' | '/themes' | '/videos'
+  id: '__root__' | '/' | '/about' | '/journal' | '/shop' | '/themes' | '/videos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   JournalRoute: typeof JournalRoute
+  ShopRoute: typeof ShopRoute
   ThemesRoute: typeof ThemesRoute
   VideosRoute: typeof VideosRoute
 }
@@ -102,6 +112,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JournalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/themes': {
       id: '/themes'
       path: '/themes'
@@ -123,6 +140,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   JournalRoute: JournalRoute,
+  ShopRoute: ShopRoute,
   ThemesRoute: ThemesRoute,
   VideosRoute: VideosRoute,
 }
