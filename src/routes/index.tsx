@@ -1,24 +1,18 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Play } from "lucide-react";
+import hero from "@/assets/madinah-morning.jpg";
+import { sampleStories, sampleVideos, themes } from "@/lib/site-content";
+import { SampleNote } from "@/components/site";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [{ title: "Barakah Paths — A Family Journey from Singapore to Madinah" }, { name: "description", content: "A family journal of Hijrah from Singapore to Madinah, sharing reflections on faith, family life, homeschooling, Arabic language and culture." }, { property: "og:title", content: "Barakah Paths — A Family Journey from Singapore to Madinah" }, { property: "og:description", content: "Reflections on faith, family, learning and purposeful living along the journey from Singapore to Madinah." }, { property: "og:url", content: "/" }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "canonical", href: "/" }] }),
   component: Index,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+function Index() { return <>
+  <section className="hero"><img className="hero-image" src={hero} alt="Illustrative view of a quiet Madinah-inspired street in morning light" width={1536} height={1024} fetchPriority="high"/><div className="site-container hero-content"><p className="eyebrow">A family journal · Singapore to Madinah</p><h1>Barakah Paths<br/><em>A journey walked with intention.</em></h1><p className="hero-lede">Our space to reflect on faith, family, learning, and the everyday moments that shape a new life in Madinah. Not a story of perfection, but of purpose.</p><div className="hero-actions"><Link className="inline-button" to="/journal">Read the journal <ArrowRight size={16}/></Link><Link className="inline-button secondary" to="/about">Our story <ArrowRight size={16}/></Link></div></div><span className="hero-caption">Illustrative image</span></section>
+  <section className="intro-band"><div className="site-container intro-band-inner"><span className="small-title">Welcome to Barakah Paths.</span><p>From the familiar streets of Singapore to life in Madinah, this is a place to keep our learnings, reflections, and moments close — and to share them with others walking a similar path.</p></div></section>
+  <section className="site-container section-block"><div className="section-topline"><div><p className="eyebrow">Recent writings</p><h2 className="section-heading">Notes from the road</h2></div><Link className="text-link" to="/journal">All entries ↗</Link></div><div className="story-grid">{sampleStories.map(story => <article className="story-card" key={story.title}><img src={story.image} alt={story.alt} width={1024} height={768} loading="lazy"/><p className="category">{story.category}</p><h3>{story.title}</h3><p className="description">{story.description}</p></article>)}</div><SampleNote/></section>
+  <section className="video-band section-block"><div className="site-container video-band-inner"><div><p className="eyebrow">Video stories</p><h2>Moments from everyday life</h2><p>There are stories best remembered in motion. This space is ready for glimpses of life, learning, and the journey as it unfolds.</p><Link className="text-link" to="/videos" style={{ color: "var(--cream)", borderColor: "var(--gold)" }}>Explore videos ↗</Link></div><div><div className="video-pair">{sampleVideos.map(video => <div className="video-tile" key={video.title}><img src={video.image} alt={video.alt} width={1024} height={768} loading="lazy"/><h3>{video.title}</h3><span>Coming soon</span></div>)}</div><SampleNote/></div></div></section>
+  <section className="site-container section-block"><div className="section-topline"><div><p className="eyebrow">Explore by theme</p><h2 className="section-heading">Paths into the story</h2></div><Link className="text-link" to="/themes">Explore themes ↗</Link></div><div className="theme-grid">{themes.map(theme => <Link key={theme.slug} className="theme-item" to="/journal" search={{ theme: theme.slug }}><span className="theme-number">{theme.number}</span><h3>{theme.name}</h3><p>{theme.description}</p></Link>)}</div></section>
+  <section className="site-container about-teaser"><div><p className="eyebrow">About us</p><h2>Who we are, and why we write</h2><p>Life is a journey, and every path carries lessons, growth, and moments of reflection. Barakah Paths is our small space to notice them.</p></div><Link className="text-link" to="/about">Read our story ↗</Link></section>
+</>; }
