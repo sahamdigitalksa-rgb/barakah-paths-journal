@@ -2,3 +2,4 @@
 - [x] Create editorial branding, illustrative imagery, and responsive styling.
 - [x] Prepare Elementor import templates, assets, and transfer instructions.
 - [x] Verify navigation and responsive display, then inspect handoff files.
+- [ ] Package the four requested native Elementor page layouts with WordPress setup instructions and inspect the download.
